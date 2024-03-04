@@ -1,0 +1,4 @@
+gymnasium~=0.28.1
+matplotlib~=3.7.2
+numpy~=1.25.0
+setuptools~=68.0.0
