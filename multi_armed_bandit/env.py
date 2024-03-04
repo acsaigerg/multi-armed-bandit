@@ -129,10 +129,13 @@ class MultiArmedBandit(gym.Env):
         ax1.axhline(y=0, color='gray', linestyle='--')
         ax1.set_xticks(np.arange(self.num_actions + 1))
 
+        ax1.violinplot(dataset=np.transpose(self.reward_distributions), showmeans=True)
         if self.show_true_distributions:
-            ax1.violinplot(dataset=np.transpose(self.reward_distributions), showmeans=True)
             for patch in ax1.collections:
                 patch.set_alpha(0.1)
+        else:
+            for patch in ax1.collections:
+                patch.set_alpha(0.0)
 
         ax1.violinplot(dataset=self._empirical_rewards, showmeans=True)
 
@@ -183,10 +186,13 @@ class MultiArmedBandit(gym.Env):
 
             ax1.set_ylabel('Reward\ndistribution', fontsize=12)
 
+            ax1.violinplot(dataset=np.transpose(self.reward_distributions), showmeans=True)
             if self.show_true_distributions:
-                ax1.violinplot(dataset=np.transpose(self.reward_distributions), showmeans=True)
                 for patch in ax1.collections:
                     patch.set_alpha(0.1)
+            else:
+                for patch in ax1.collections:
+                    patch.set_alpha(0.0)
 
             ax1.violinplot(dataset=empirical_rewards, showmeans=True)
 
